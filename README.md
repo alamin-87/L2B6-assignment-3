@@ -1,4 +1,4 @@
-# Vehicle Booking Queries — Documentation
+# Vehicle Rental System — Documentation
 
 ## Project Overview
 
