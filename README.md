@@ -3,7 +3,7 @@
 ## Project Overview
 
 This repository contains a set of SQL queries for a vehicle booking system. The queries demonstrate common tasks such as listing bookings with customer and vehicle details, finding vehicles without bookings, filtering available vehicles by type, and aggregating booking counts per vehicle.
-
+- **ERD:** https://drawsql.app/teams/area-6/diagrams/vehicle-rental-system
 Files
 - [queries.sql](queries.sql): SQL queries used in this assignment.
 
