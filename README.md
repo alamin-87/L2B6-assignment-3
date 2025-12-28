@@ -6,19 +6,14 @@ This repository contains a set of SQL queries for a vehicle booking system. The 
 - **ERD:** https://drawsql.app/teams/area-6/diagrams/vehicle-rental-system
 - **Files:** [queries.sql](queries.sql): SQL queries used in this assignment.
 
-## Database Context (Assumptions)
+## Database Context
 
 These queries assume a relational schema with at least the following tables and columns:
-- `users` (columns: `user_id`, `name`, ...)
-- `vehicles` (columns: `vehicle_id`, `name`, `type`, `status`, ...)
-- `bookings` (columns: `booking_id`, `user_id`, `vehicle_id`, `start_date`, `end_date`, `status`, ...)
-
-Adjust table or column names if your schema differs.
+- `users` (columns: `user_id`, `name`, `email`, `phone`, `role`, `password`)
+- `vehicles` (columns: `vehicle_id`, `name`, `type`, `model`, `registration_number`, `rental_price`, `status`)
+- `bookings` (columns: `booking_id`, `user_id`, `vehicle_id`, `start_date`, `end_date`, `status`, `total_cost`)
 
 ## Queries and Solutions
-
-Below are each of the queries from `queries.sql` with an explanation of what they return and notes about expected results.
-
 1) List bookings with customer and vehicle details
 
 SQL:
@@ -46,8 +41,7 @@ Results:
 | 4          | Alice         | Toyota Corolla | 2023-12-10  | 2023-12-12  | pending   |
 
 Solution / Explanation:
-- Returns one row per booking, joining the `bookings` table to `users` and `vehicles` to provide readable customer and vehicle names alongside booking dates and status.
-- Use this query to display a booking ledger or admin view. If a booking references a missing user or vehicle, those bookings will be omitted because of the `INNER JOIN`s.
+- Returns one row per booking, joining the `bookings` table to `users` and `vehicles` to provide readable customer and vehicle names alongside booking dates and status. If a booking references a missing user or vehicle, those bookings will be omitted because of the `INNER JOIN`s.
 
 2) Find vehicles with no bookings
 
