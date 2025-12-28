@@ -123,7 +123,7 @@ Solution / Explanation:
 
 This short project documents four representative SQL queries for a vehicle booking system, including example results and usage notes. The examples demonstrate how to join tables for readable booking listings, detect unbooked vehicles, filter available inventory, and aggregate booking counts. These queries can be adapted to your production schema and extended with parameters, indexes, and prepared statements for robustness.
 
-## Contact / Accounts
+## Contact
 
 - **GitHub:** https://github.com/alamin-87
 - **LinkedIn:** https://www.linkedin.com/in/alamin87/
