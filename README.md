@@ -39,13 +39,12 @@ INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id;
 
 Results:
 
-```plaintext
-booking_id	customer_name	vehicle_name	start_date	end_date	status
-1	Alice	Honda Civic	2023-10-01	2023-10-05	completed
-2	Alice	Honda Civic	2023-11-01	2023-11-03	completed
-3	Charlie	Honda Civic	2023-12-01	2023-12-02	confirmed
-4	Alice	Toyota Corolla	2023-12-10	2023-12-12	pending
-```
+| booking_id | customer_name | vehicle_name   | start_date  | end_date    | status    |
+|-----------:|---------------|----------------|-------------|-------------|-----------|
+| 1          | Alice         | Honda Civic    | 2023-10-01  | 2023-10-05  | completed |
+| 2          | Alice         | Honda Civic    | 2023-11-01  | 2023-11-03  | completed |
+| 3          | Charlie       | Honda Civic    | 2023-12-01  | 2023-12-02  | confirmed |
+| 4          | Alice         | Toyota Corolla | 2023-12-10  | 2023-12-12  | pending   |
 
 Solution / Explanation:
 - Returns one row per booking, joining the `bookings` table to `users` and `vehicles` to provide readable customer and vehicle names alongside booking dates and status.
@@ -67,11 +66,10 @@ WHERE NOT EXISTS (
 
 Results:
 
-```plaintext
-vehicle_id	name	type	model	registration_number	rental_price	status
-3	Yamaha R15	bike	2023	GHI-789	30	available
-4	Ford F-150	truck	2020	JKL-012	100	maintenance
-```
+| vehicle_id | name        | type  | model | registration_number | rental_price | status      |
+|-----------:|-------------|-------|-------|---------------------|-------------:|-------------|
+| 3          | Yamaha R15  | bike  | 2023  | GHI-789             | 30           | available   |
+| 4          | Ford F-150  | truck | 2020  | JKL-012             | 100          | maintenance |
 
 Solution / Explanation:
 - Returns all vehicles that have no rows in the `bookings` table (i.e., never been booked).
@@ -90,10 +88,9 @@ AND type = 'car';
 
 Results:
 
-```plaintext
-vehicle_id	name	type	model	registration_number	rental_price	status
-1	Toyota Corolla	car	2022	ABC-123	50	available
-```
+| vehicle_id | name           | type | model | registration_number | rental_price | status    |
+|-----------:|----------------|------|-------|---------------------|-------------:|-----------|
+| 1          | Toyota Corolla | car  | 2022  | ABC-123             | 50           | available |
 
 Solution / Explanation:
 - Returns vehicles whose `status` is `'available'` and whose `type` is `'car'`.
@@ -115,16 +112,20 @@ HAVING COUNT(b.booking_id) > 2;
 
 Results:
 
-```plaintext
-vehicle_name	total_bookings
-Honda Civic	3
-```
+| vehicle_name | total_bookings  |
+|--------------|----------------:|
+| Honda Civic  | 3               |
 
 Solution / Explanation:
 - Aggregates bookings by `vehicles.name` and returns vehicles that have more than two bookings.
 - Useful for identifying high-utilization vehicles. If multiple vehicles can share the same `name`, grouping by `v.vehicle_id, v.name` is safer to avoid conflating different vehicles with identical names.
 
-## Notes & Suggestions
+## Conclusion
 
-- Consider adding appropriate indexes on `bookings(vehicle_id)`, `bookings(user_id)`, and `vehicles(status,type)` to improve query performance.
-- If you need result examples (sample rows), provide a sample dataset and I can run the queries or produce expected result sets.
+This short project documents four representative SQL queries for a vehicle booking system, including example results and usage notes. The examples demonstrate how to join tables for readable booking listings, detect unbooked vehicles, filter available inventory, and aggregate booking counts. These queries can be adapted to your production schema and extended with parameters, indexes, and prepared statements for robustness.
+
+## Contact / Accounts
+
+- **GitHub:** https://github.com/alamin-87
+- **LinkedIn:** https://www.linkedin.com/in/alamin87/
+- **Portfolio:** https://personalportfolioalamin.netlify.app/
